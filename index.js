@@ -24,13 +24,20 @@ const exampleMovies = require("./movies");
       "Incredibles 2",
       "Moana",
       "How to Train Your Dragon",
-      "Paddington",
       "The Lion King",
       "Fantasia",
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  if (movies.length === 0){
+    throw "no data available";
+  }
+  return movies.map(movie => {
+    return movie.title;
+  });
+
+}
 
 /**
  * checkIfAnyMovieHasRating()
@@ -50,7 +57,13 @@ function getAllMovieTitles() {}
  *  checkIfAnyMovieHasRating(movies, "R");
  *  //> false
  */
-function checkIfAnyMovieHasRating() {}
+function checkIfAnyMovieHasRating(movies, rating = "G") {
+  if (movies.length === 0){
+    throw "no data available";
+  }
+  return movies.some(movie => movie.rated === rating);
+
+}
 
 /**
  * findById()
@@ -68,7 +81,20 @@ function checkIfAnyMovieHasRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  if (movies.length === 0){
+    throw "no data available";
+  }
+  let result = null;
+  const ans = movies.find(movie => id === movie.imdbID);
+    if (ans){
+      return ans;
+    } else {
+      return result;
+    }
+  
+
+}
 
 /**
  * filterByGenre()
@@ -92,7 +118,13 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+  if (movies.length === 0){
+    throw "no data available";
+  }
+  genre = genre.toLowerCase();
+  return movies.filter(movie => movie.genre.toLowerCase().includes(genre));
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
